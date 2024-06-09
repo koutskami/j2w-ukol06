@@ -34,13 +34,13 @@ public class VizitkaController {
                 .addObject("seznam", vizitkaRepository.findAll());
     }
 
-    @GetMapping("/novy")
-    public ModelAndView novy() {
+    @GetMapping("/nova")
+    public ModelAndView nova() {
         return new ModelAndView("formular")
                 .addObject("vizitka", new Vizitka());
     }
 
-    @PostMapping("/novy")
+    @PostMapping("/nova")
     public String pridat(@ModelAttribute("vizitka") @Valid Vizitka vizitka, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "vizitka";

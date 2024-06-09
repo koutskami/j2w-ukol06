@@ -2,7 +2,7 @@
 [@c.page]
     <div class="seznam">
         [#list seznam as vizitka]
-            <a href="/detail/${vizitka?index}">
+            <a href="/${vizitka.id}">
                 <div class="vizitka">
                     <div class="jmeno">[#if vizitka.cele_jmeno??]${vizitka.cele_jmeno}[#else]<em>neuvedeno</em>[/#if]</div>
                     <div class="firma">[#if vizitka.firma??]${vizitka.firma}[#else]<em>neuvedeno</em>[/#if]</div>
