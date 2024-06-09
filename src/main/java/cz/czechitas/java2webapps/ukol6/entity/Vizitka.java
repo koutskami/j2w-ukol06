@@ -1,5 +1,6 @@
 package cz.czechitas.java2webapps.ukol6.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -8,6 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
+@Entity
 public class Vizitka {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +17,9 @@ public class Vizitka {
     @Length(max = 100)
     @NotBlank
     String cele_jmeno;
+    @Length(max = 100)
+    @NotBlank
+    String firma;
     @Length(max = 100)
     @NotBlank
     String ulice;
@@ -35,9 +40,10 @@ public class Vizitka {
 
     public Vizitka() {
     }
-    public Vizitka(int id, String cele_jmeno, String ulice, String obec, String psc, String email, String telefon, String web) {
+    public Vizitka(int id, String cele_jmeno, String firma, String ulice, String obec, String psc, String email, String telefon, String web) {
         this.id = id;
         this.cele_jmeno = cele_jmeno;
+        this.firma = firma;
         this.ulice = ulice;
         this.obec = obec;
         this.psc = psc;
@@ -112,5 +118,13 @@ public class Vizitka {
 
     public String getCelaAdresa(){
         return (ulice + ", " + psc + " " + obec);
+    }
+
+    public String getFirma() {
+        return firma;
+    }
+
+    public void setFirma(String firma) {
+        this.firma = firma;
     }
 }

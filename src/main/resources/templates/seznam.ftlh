@@ -4,12 +4,13 @@
         [#list seznam as vizitka]
             <a href="/detail/${vizitka?index}">
                 <div class="vizitka">
-                    <div class="jmeno">[#if vizitka.jmeno??]${vizitka.jmeno}[#else]<em>neuvedeno</em>[/#if]</div>
+                    <div class="jmeno">[#if vizitka.cele_jmeno??]${vizitka.cele_jmeno}[#else]<em>neuvedeno</em>[/#if]</div>
                     <div class="firma">[#if vizitka.firma??]${vizitka.firma}[#else]<em>neuvedeno</em>[/#if]</div>
                     <div class="udaje">
                         <div class="adresa">
                             <div>[#if vizitka.ulice??]${vizitka.ulice}[#else]<em>neuvedeno</em>[/#if]</div>
-                            <div>[#if vizitka.obecPsc??]${vizitka.obecPsc}[#else]<em>neuvedeno</em>[/#if]</div>
+                            <div>[#if vizitka.obec??]${vizitka.obec}[#else]<em>neuvedeno</em>[/#if]</div>
+                            <div>[#if vizitka.psc??]${vizitka.psc}[#else]<em>neuvedeno</em>[/#if]</div>
                         </div>
                         <div class="kontakty">
                             <div><i class="bi bi-at"></i> [#if vizitka.email??]${vizitka.email}[#else]<em>neuvedeno</em>[/#if]</div>

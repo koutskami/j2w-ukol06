@@ -31,7 +31,7 @@ public class VizitkaController {
     @GetMapping("/")
     public ModelAndView seznam() {
         return new ModelAndView("seznam")
-                .addObject("vizitky", vizitkaRepository.findAll());
+                .addObject("seznam", vizitkaRepository.findAll());
     }
 
     @GetMapping("/novy")
@@ -66,12 +66,6 @@ public class VizitkaController {
             return "vizitka";
         }
         vizitkaRepository.save(vizitka);
-        return "redirect:/";
-    }
-
-    @PostMapping(value = "/{id:[0-9]+}", params = "akce=smazat")
-    public String smazat(@PathVariable Integer id) {
-        vizitkaRepository.deleteById(id);
         return "redirect:/";
     }
 }
