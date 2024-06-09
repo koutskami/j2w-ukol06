@@ -34,6 +34,16 @@ public class VizitkaController {
                 .addObject("seznam", vizitkaRepository.findAll());
     }
 
+    @GetMapping("/{id:[0-9]+}")
+    public ModelAndView detail(@PathVariable Integer id) {
+        Optional<Vizitka> vizitka = vizitkaRepository.findById(id);
+        if (vizitka.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return new ModelAndView("vizitka")
+                .addObject("vizitka", vizitka.get());
+    }
+
     @GetMapping("/nova")
     public ModelAndView nova() {
         return new ModelAndView("formular")
@@ -46,25 +56,6 @@ public class VizitkaController {
             return "vizitka";
         }
         vizitka.setId(null);
-        vizitkaRepository.save(vizitka);
-        return "redirect:/";
-    }
-
-    @GetMapping("/{id:[0-9]+}")
-    public ModelAndView detail(@PathVariable Integer id) {
-        Optional<Vizitka> vizitka = vizitkaRepository.findById(id);
-        if (vizitka.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-        return new ModelAndView("vizitka")
-                .addObject("vizitka", vizitka.get());
-    }
-
-    @PostMapping("/{id:[0-9]+}")
-    public String ulozit(@ModelAttribute("vizitka") @Valid Vizitka vizitka, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "vizitka";
-        }
         vizitkaRepository.save(vizitka);
         return "redirect:/";
     }
